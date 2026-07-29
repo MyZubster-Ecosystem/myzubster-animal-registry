@@ -1,4 +1,9 @@
 > **Part of the [MyZubster ecosystem](https://github.com/MyZubster-Ecosystem/myzubster)**
+[![License](https://img.shields.io/github/license/DanielIoni-creator/myzubster-animal-registry](LICENSE)) 
+[![GitHub stars](https://img.shields.io/github/stars/DanielIoni-creator/myzubster-animal-registry](https://github.com/DanielIoni-creator/myzubster-animal-registry/stargazers)) 
+[![GitHub issues](https://img.shields.io/github/issues/DanielIoni-creator/myzubster-animal-registry](https://github.com/DanielIoni-creator/myzubster-animal-registry/issues)) 
+[![GitHub last commit](https://img.shields.io/github/last-commit/DanielIoni-creator/myzubster-animal-registry](https://github.com/DanielIoni-creator/myzubster-animal-registry/commits/main)) 
+[![Node.js](https://img.shields.io/badge/Node.js-18.x-green)](https://nodejs.org/)
 
 # 🐾 MyZubster - Animal Registry
 
