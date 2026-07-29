@@ -14,9 +14,9 @@
 
 ## 📈 Transaction History
 
-| Date | Type | Amount (XMR) | Recipient |
-|------|------|--------------|-----------|
-| - | - | - | - |
+| Date | Type | Amount (XMR) | Issue | Recipient | TX ID |
+|------|------|--------------|-------|-----------|-------|
+| 2026-07-29 | Payout | 0.06 | #7 | 45ynVR1Ngj... | b0ae536711... |
 
 ---
 
@@ -43,3 +43,10 @@ Support animal welfare by sending XMR to:
 - You fund animal welfare projects
 - You help protect endangered species
 - You promote animal conservation
+
+---
+
+## 📋 Verification
+
+All payouts are recorded on the Monero blockchain.
+Privacy note: Amounts are public, but senders/recipients remain private.
