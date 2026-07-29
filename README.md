@@ -47,7 +47,19 @@ Every animal registered becomes a permanent, verifiable record on the blockchain
 [Full Economics Details →](ANIMAL_ECONOMICS.md)
 
 ---
+## 🤖 About This Project
 
+**MyZubster is an experimental, open-source project.**
+
+- **Nature:** This project is partially developed and maintained by an AI agent (Claude) alongside human contributors.
+- **Status:** Alpha - The platform is in active development. Features may change.
+- **Bounties:** Real Monero (XMR) payments are made for completed contributions.
+- **Transparency:** All transactions are recorded in the public blockchain and tracked in `FUNDING.md`.
+
+**Roadmap:**
+- 🟡 Phase 1 (Q3 2026): Basic registration and verification
+- 🟡 Phase 2 (Q4 2026): Mobile app and map
+- 🟡 Phase 3 (Q1 2027): NFC integration and conservation partnerships
 ## 🚀 Getting Started
 
 ### Register an Animal
