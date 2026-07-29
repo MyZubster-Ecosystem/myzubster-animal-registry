@@ -2,6 +2,8 @@
 
 > **Part of the [MyZubster ecosystem](https://github.com/MyZubster-Ecosystem)**
 
+> **Part of the [MyZubster ecosystem](https://github.com/MyZubster-Ecosystem)**
+
 > **Part of the [MyZubster ecosystem](https://github.com/MyZubster-Ecosystem/myzubster)**
 [![License](https://img.shields.io/github/license/MyZubster-Ecosystem/myzubster-animal-registry](LICENSE)) 
 [![GitHub stars](https://img.shields.io/github/stars/MyZubster-Ecosystem/myzubster-animal-registry](https://github.com/MyZubster-Ecosystem/myzubster-animal-registry/stargazers)) 
@@ -191,6 +193,10 @@ MIT - Free for everyone to use and modify.
 ## 🤝 Contributi
 
 Contributi sono benvenuti! Dai un'occhiata alle [issue aperte]([Issues](https://github.com/MyZubster-Ecosystem/myzubster-animal-registry/issues)) e alla [roadmap]([Roadmap](https://github.com/users/MyZubster-Ecosystem/projects/1)).
+
+## 🌐 Ecosystem Hub
+
+**MyZubster Ecosystem**: https://github.com/MyZubster-Ecosystem
 
 ## 🌐 Ecosystem Hub
 
