@@ -113,14 +113,15 @@ We welcome:
 
 ## NFC Tag Generation
 
-This repository includes a Node.js utility for generating NFC tag payloads for registered animals.
+This repository includes a Node.js utility for generating NFC tag payloads for registered animals, including encrypted and signed secure tags.
 
 ```bash
 npm test
 node bin/generate-nfc-tag.js registration.json
+node bin/generate-nfc-tag.js registration.json --secure --public-key registry-public.pem --private-key registry-private.pem
 ```
 
-See [docs/nfc-tags.md](docs/nfc-tags.md) for the payload format, CLI usage, validation rules, and registration integration notes.
+See [docs/nfc-tags.md](docs/nfc-tags.md) for the payload format, CLI usage, validation rules, anti-counterfeiting checks, and registration integration notes.
 
 ---
 
