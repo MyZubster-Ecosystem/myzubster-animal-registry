@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MyZubster Web NFC Tag Simulator</title>
+  <link rel="icon" href="data:," />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>🐾 MyZubster Web NFC Tag Simulator</h1>
+    <p class="lead">
+      Browser-side counterpart of <code>src/nfcTag.js</code>. Generate virtual
+      NFC tags, simulate a scan, and test the verification flow without a
+      physical tag or NFC reader.
+    </p>
+  </header>
+
+  <main>
+    <section id="generate-panel" class="panel">
+      <h2>1. Generate a virtual NFC tag</h2>
+      <p class="muted">Fill the animal registration form. Fields marked
+        <span class="req">*</span> are required. The simulator runs entirely
+        in this browser tab &mdash; no network calls, no external services.</p>
+
+      <form id="registration-form">
+        <div class="grid">
+          <label>Species <span class="req">*</span>
+            <input name="species" required value="Canis lupus familiaris" />
+          </label>
+          <label>Common name <span class="req">*</span>
+            <input name="common_name" required value="Dog" />
+          </label>
+          <label>Animal type <span class="req">*</span>
+            <select name="animal_type" required>
+              <option value="pet" selected>pet</option>
+              <option value="livestock">livestock</option>
+              <option value="wildlife">wildlife</option>
+              <option value="aquatic">aquatic</option>
+              <option value="insect">insect</option>
+            </select>
+          </label>
+          <label>Latitude <span class="req">*</span>
+            <input name="latitude" type="number" step="any" required value="41.9028" />
+          </label>
+          <label>Longitude <span class="req">*</span>
+            <input name="longitude" type="number" step="any" required value="12.4964" />
+          </label>
+          <label>Age (years)
+            <input name="age" type="number" min="0" value="3" />
+          </label>
+          <label>Weight (kg)
+            <input name="weight" type="number" min="0" value="25" />
+          </label>
+          <label>XMR address <span class="req">*</span>
+            <input name="xmr_address" required
+              value="48dKf2FVJh3Uei2BL6BSRe4weK8T4h5aYXqYzSgoq2KJhbVKo2kSSBZtftWEibKLTe3RQTW3aL9jJLcNfWTwR2cF5rF1QfA" />
+          </label>
+        </div>
+        <label class="full">Description
+          <textarea name="description" rows="2">Friendly dog in the park</textarea>
+        </label>
+
+        <div class="actions">
+          <button type="button" id="btn-generate">Generate NFC tag</button>
+          <button type="button" id="btn-load-sample" class="secondary">Load wildlife sample</button>
+          <button type="button" id="btn-reset" class="secondary">Reset</button>
+        </div>
+      </form>
+
+      <div id="generate-output" class="output" hidden></div>
+    </section>
+
+    <section id="scan-panel" class="panel">
+      <h2>2. Simulate a scan</h2>
+      <p class="muted">Click <em>Scan</em> on a generated tag to imitate a
+        mobile device tapping the NFC tag. The simulator decodes the URI,
+        validates the schema, and confirms a successful round-trip.</p>
+
+      <div class="actions">
+        <button type="button" id="btn-scan" disabled>Scan selected tag</button>
+        <label class="inline">
+          Device name
+          <input type="text" id="device-name" value="Web NFC Simulator (browser)" />
+        </label>
+      </div>
+
+      <div id="scan-output" class="output" hidden></div>
+    </section>
+
+    <section id="verify-panel" class="panel">
+      <h2>3. Test the verification flow</h2>
+      <p class="muted">Replays the registry verification: the scanner reads
+        the tag, the page looks up the expected record, and reports whether
+        they match.</p>
+
+      <div class="actions">
+        <button type="button" id="btn-verify" disabled>Run verification</button>
+        <label class="inline">
+          Simulate tamper
+          <input type="checkbox" id="tamper-toggle" />
+        </label>
+      </div>
+
+      <div id="verify-output" class="output" hidden></div>
+    </section>
+
+    <section id="tags-panel" class="panel">
+      <h2>Tag history</h2>
+      <p class="muted">Tags generated in this session. Stored in
+        <code>sessionStorage</code> only &mdash; nothing leaves your browser.</p>
+      <table id="tag-history">
+        <thead>
+          <tr><th>Tag ID</th><th>Animal</th><th>Created</th><th></th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <p id="tag-history-empty" class="muted">No tags yet.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      See <a href="docs/web-simulator.md">docs/web-simulator.md</a> for the
+      underlying payload schema and integration notes.
+    </p>
+  </footer>
+
+  <script src="simulator.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
