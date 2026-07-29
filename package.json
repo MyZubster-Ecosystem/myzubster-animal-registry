@@ -1,0 +1,19 @@
+{
+  "name": "myzubster-animal-registry",
+  "version": "0.1.0",
+  "description": "Decentralized animal registry NFC utilities.",
+  "main": "src/nfcTag.js",
+  "bin": {
+    "myzubster-nfc-tag": "bin/generate-nfc-tag.js"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "keywords": [
+    "myzubster",
+    "nfc",
+    "monero",
+    "registry"
+  ],
+  "license": "MIT"
+}
