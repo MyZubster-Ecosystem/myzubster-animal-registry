@@ -1,3 +1,5 @@
+> **Part of the [MyZubster ecosystem](https://github.com/MyZubster-Ecosystem/myzubster)**
+
 # 🐾 MyZubster - Animal Registry
 
 **Decentralized Animal Registry powered by Monero Blockchain**
