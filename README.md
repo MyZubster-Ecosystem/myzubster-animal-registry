@@ -183,3 +183,7 @@ MIT - Free for everyone to use and modify.
 - [Fund Transparency](FUNDING.md) – All transactions are public
 - [API Documentation](docs/api.md) – API reference
 - [Verification Process](docs/verification.md) – How verification works
+
+## 🤝 Contributi
+
+Contributi sono benvenuti! Dai un'occhiata alle [issue aperte]([Issues](https://github.com/DanielIoni-creator/myzubster-animal-registry/issues)) e alla [roadmap]([Roadmap](https://github.com/users/DanielIoni-creator/projects/1)).
