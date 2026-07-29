@@ -36,15 +36,32 @@ Every animal registered becomes a permanent, verifiable record on the blockchain
 
 ## 📊 Economics
 
-| Fee Type | Percentage | Destination |
-|----------|------------|-------------|
-| **Creator Fee** | **2%** | **MyZubster platform creator** |
-| Conservation Fund | 5% | Animal welfare projects |
-| Development Fund | 3% | Platform improvements |
-| Community Fund | 1% | Rewards & incentives |
-| Operations | 89% | Infrastructure & support |
+**Registration is FREE.**
 
-[Full Economics Details →](ANIMAL_ECONOMICS.md)
+MyZubster is an open-source, community-driven project. All animal registrations are free.
+
+### How the Platform is Funded
+
+The platform is sustained through:
+- 💰 **Donations** – Voluntary contributions from the community
+- 🚀 **Premium Services** – Optional paid features (certificates, analytics)
+- 🤝 **Sponsors & Grants** – Corporate sponsorships and open source grants
+
+### Fund Allocation
+
+| Destination | Percentage |
+|-------------|------------|
+| Bounties | 90% |
+| Infrastructure | 5% |
+| Conservation | 5% |
+
+### Donate to Support MyZubster
+
+If you believe in this project, you can support us with a donation in Monero (XMR):
+
+**Wallet:** `45M4DW1ug8bdQowWpxucTpgsfjLbVxbYaAra79VewmBobuuhgqTjyD4R3DzpqLM2veiphcB16n24qN1QbLg3y2PYGK3Qkoe`
+
+[Full Economics Details →](ECONOMICS.md)
 
 ---
 ## 🤖 About This Project
