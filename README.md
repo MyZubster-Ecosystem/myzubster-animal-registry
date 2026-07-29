@@ -111,6 +111,19 @@ We welcome:
 
 ---
 
+## NFC Tag Generation
+
+This repository includes a Node.js utility for generating NFC tag payloads for registered animals.
+
+```bash
+npm test
+node bin/generate-nfc-tag.js registration.json
+```
+
+See [docs/nfc-tags.md](docs/nfc-tags.md) for the payload format, CLI usage, validation rules, and registration integration notes.
+
+---
+
 ## 📄 License
 
 MIT - Free for everyone to use and modify.
