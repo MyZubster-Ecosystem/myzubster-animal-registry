@@ -148,3 +148,31 @@ MIT - Free for everyone to use and modify.
 ---
 
 **Built with ❤️ for animals by DanielIoni-creator**
+## 🔗 Related Projects
+
+| Project | Description | Link |
+|---------|-------------|------|
+| **MyZubster Gateway** | Backend API for Monero payments and registry | [GitHub](https://github.com/DanielIoni-creator/MyZubsterGateway) |
+| **MyZubster Plant Map** | Global map for plant registration | [GitHub](https://github.com/DanielIoni-creator/-MyZubster---Global-Plant-Map-powered-by-Monero-blockchain) |
+| **MyZubster Animal Map** | Interactive map for animal registry | [GitHub](https://github.com/DanielIoni-creator/myzubster-animal-map) |
+
+---
+
+## 🔗 Related Projects
+
+| Project | Description | Link |
+|---------|-------------|------|
+| **MyZubster Gateway** | Backend API for Monero payments and registry | [GitHub](https://github.com/DanielIoni-creator/MyZubsterGateway) |
+| **MyZubster Plant Map** | Global map for plant registration | [GitHub](https://github.com/DanielIoni-creator/-MyZubster---Global-Plant-Map-powered-by-Monero-blockchain) |
+| **MyZubster Animal Map** | Interactive map for animal registry | [GitHub](https://github.com/DanielIoni-creator/myzubster-animal-map) |
+
+---
+
+## 📚 Documentation
+
+- [Economic Framework](ECONOMICS.md) – Tokenomics and fee structure
+- [Registration Guide](ANIMAL_REGISTRATION.md) – How to register an animal
+- [Contribution Guide](CONTRIBUTING.md) – How to contribute and earn XMR
+- [Fund Transparency](FUNDING.md) – All transactions are public
+- [API Documentation](docs/api.md) – API reference
+- [Verification Process](docs/verification.md) – How verification works
