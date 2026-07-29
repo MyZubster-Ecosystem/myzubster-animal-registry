@@ -1,0 +1,96 @@
+name: "🐾 Register an Animal (XMR Bounty)"
+description: "Register a new animal on the MyZubster Animal Registry"
+title: "[ANIMAL] Species Name - Location"
+labels: ["🐾 animal-registration"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 🐾 Register an Animal on MyZubster
+        **Reward:** 0.001 XMR (≈ €0.20) for each verified animal registration.
+        ⚠️ **Payment Policy:** This bounty pays in Monero (XMR) ONLY.
+
+  - type: dropdown
+    id: animal_type
+    attributes:
+      label: "🐾 Animal Type"
+      options:
+        - "Pet (dog, cat, bird, etc.)"
+        - "Livestock (cow, pig, sheep, etc.)"
+        - "Wildlife (elephant, tiger, etc.)"
+        - "Aquatic (fish, dolphin, etc.)"
+        - "Insect (bee, butterfly, etc.)"
+    validations:
+      required: true
+
+  - type: input
+    id: species
+    attributes:
+      label: "🔬 Species Name"
+      placeholder: "Canis lupus familiaris"
+    validations:
+      required: true
+
+  - type: input
+    id: common_name
+    attributes:
+      label: "📝 Common Name"
+      placeholder: "Dog"
+    validations:
+      required: true
+
+  - type: input
+    id: latitude
+    attributes:
+      label: "📍 Latitude"
+      placeholder: "41.9028"
+    validations:
+      required: true
+
+  - type: input
+    id: longitude
+    attributes:
+      label: "📍 Longitude"
+      placeholder: "12.4964"
+    validations:
+      required: true
+
+  - type: input
+    id: age
+    attributes:
+      label: "📅 Estimated Age"
+      placeholder: "3 years"
+
+  - type: input
+    id: weight
+    attributes:
+      label: "⚖️ Weight (kg)"
+      placeholder: "25"
+
+  - type: textarea
+    id: description
+    attributes:
+      label: "📝 Description"
+      placeholder: "Describe the animal, its behavior, habitat, etc."
+
+  - type: textarea
+    id: photos
+    attributes:
+      label: "📸 Photos"
+      placeholder: "https://imgur.com/..."
+
+  - type: input
+    id: xmr_address
+    attributes:
+      label: "💰 Monero (XMR) Address"
+      placeholder: "4A2M4vB..."
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ### 🔒 Privacy Notice
+        - Your Monero address will only be used for payment
+        - No personal data required
+        - All records are public on the Monero blockchain

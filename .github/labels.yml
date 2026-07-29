@@ -1,0 +1,45 @@
+# Animal Registration Labels
+- name: "🐾 animal-registration"
+  color: "2ecc71"
+  description: "New animal registration request"
+
+- name: "🐶 pet"
+  color: "3498db"
+  description: "Pet animal (dog, cat, bird, etc.)"
+
+- name: "🐮 livestock"
+  color: "f1c40f"
+  description: "Livestock animal (cow, pig, sheep, etc.)"
+
+- name: "🐘 wildlife"
+  color: "e67e22"
+  description: "Wildlife animal (elephant, tiger, etc.)"
+
+- name: "🐠 aquatic"
+  color: "1abc9c"
+  description: "Aquatic animal (fish, dolphin, etc.)"
+
+- name: "🐝 insect"
+  color: "f39c12"
+  description: "Insect (bee, butterfly, etc.)"
+
+- name: "✅ verified"
+  color: "27ae60"
+  description: "Animal has been verified"
+
+- name: "💰 premium"
+  color: "e74c3c"
+  description: "0.06 XMR - Complex features"
+
+- name: "🔒 security"
+  color: "e74c3c"
+  description: "Security vulnerabilities"
+
+# Status Labels
+- name: "claimed"
+  color: "3498db"
+  description: "Someone is working on this"
+
+- name: "paid"
+  color: "2c3e50"
+  description: "Bounty paid 🎉"
