@@ -1,8 +1,8 @@
 > **Part of the [MyZubster ecosystem](https://github.com/MyZubster-Ecosystem/myzubster)**
-[![License](https://img.shields.io/github/license/DanielIoni-creator/myzubster-animal-registry](LICENSE)) 
-[![GitHub stars](https://img.shields.io/github/stars/DanielIoni-creator/myzubster-animal-registry](https://github.com/DanielIoni-creator/myzubster-animal-registry/stargazers)) 
-[![GitHub issues](https://img.shields.io/github/issues/DanielIoni-creator/myzubster-animal-registry](https://github.com/DanielIoni-creator/myzubster-animal-registry/issues)) 
-[![GitHub last commit](https://img.shields.io/github/last-commit/DanielIoni-creator/myzubster-animal-registry](https://github.com/DanielIoni-creator/myzubster-animal-registry/commits/main)) 
+[![License](https://img.shields.io/github/license/MyZubster-Ecosystem/myzubster-animal-registry](LICENSE)) 
+[![GitHub stars](https://img.shields.io/github/stars/MyZubster-Ecosystem/myzubster-animal-registry](https://github.com/MyZubster-Ecosystem/myzubster-animal-registry/stargazers)) 
+[![GitHub issues](https://img.shields.io/github/issues/MyZubster-Ecosystem/myzubster-animal-registry](https://github.com/MyZubster-Ecosystem/myzubster-animal-registry/issues)) 
+[![GitHub last commit](https://img.shields.io/github/last-commit/MyZubster-Ecosystem/myzubster-animal-registry](https://github.com/MyZubster-Ecosystem/myzubster-animal-registry/commits/main)) 
 [![Node.js](https://img.shields.io/badge/Node.js-18.x-green)](https://nodejs.org/)
 
 # 🐾 MyZubster - Animal Registry
@@ -154,14 +154,14 @@ MIT - Free for everyone to use and modify.
 
 ---
 
-**Built with ❤️ for animals by DanielIoni-creator**
+**Built with ❤️ for animals by MyZubster-Ecosystem**
 ## 🔗 Related Projects
 
 | Project | Description | Link |
 |---------|-------------|------|
-| **MyZubster Gateway** | Backend API for Monero payments and registry | [GitHub](https://github.com/DanielIoni-creator/MyZubsterGateway) |
-| **MyZubster Plant Map** | Global map for plant registration | [GitHub](https://github.com/DanielIoni-creator/-MyZubster---Global-Plant-Map-powered-by-Monero-blockchain) |
-| **MyZubster Animal Map** | Interactive map for animal registry | [GitHub](https://github.com/DanielIoni-creator/myzubster-animal-map) |
+| **MyZubster Gateway** | Backend API for Monero payments and registry | [GitHub](https://github.com/MyZubster-Ecosystem/MyZubsterGateway) |
+| **MyZubster Plant Map** | Global map for plant registration | [GitHub](https://github.com/MyZubster-Ecosystem/-MyZubster---Global-Plant-Map-powered-by-Monero-blockchain) |
+| **MyZubster Animal Map** | Interactive map for animal registry | [GitHub](https://github.com/MyZubster-Ecosystem/myzubster-animal-map) |
 
 ---
 
@@ -169,9 +169,9 @@ MIT - Free for everyone to use and modify.
 
 | Project | Description | Link |
 |---------|-------------|------|
-| **MyZubster Gateway** | Backend API for Monero payments and registry | [GitHub](https://github.com/DanielIoni-creator/MyZubsterGateway) |
-| **MyZubster Plant Map** | Global map for plant registration | [GitHub](https://github.com/DanielIoni-creator/-MyZubster---Global-Plant-Map-powered-by-Monero-blockchain) |
-| **MyZubster Animal Map** | Interactive map for animal registry | [GitHub](https://github.com/DanielIoni-creator/myzubster-animal-map) |
+| **MyZubster Gateway** | Backend API for Monero payments and registry | [GitHub](https://github.com/MyZubster-Ecosystem/MyZubsterGateway) |
+| **MyZubster Plant Map** | Global map for plant registration | [GitHub](https://github.com/MyZubster-Ecosystem/-MyZubster---Global-Plant-Map-powered-by-Monero-blockchain) |
+| **MyZubster Animal Map** | Interactive map for animal registry | [GitHub](https://github.com/MyZubster-Ecosystem/myzubster-animal-map) |
 
 ---
 
@@ -186,4 +186,4 @@ MIT - Free for everyone to use and modify.
 
 ## 🤝 Contributi
 
-Contributi sono benvenuti! Dai un'occhiata alle [issue aperte]([Issues](https://github.com/DanielIoni-creator/myzubster-animal-registry/issues)) e alla [roadmap]([Roadmap](https://github.com/users/DanielIoni-creator/projects/1)).
+Contributi sono benvenuti! Dai un'occhiata alle [issue aperte]([Issues](https://github.com/MyZubster-Ecosystem/myzubster-animal-registry/issues)) e alla [roadmap]([Roadmap](https://github.com/users/MyZubster-Ecosystem/projects/1)).
