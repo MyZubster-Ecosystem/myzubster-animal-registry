@@ -141,16 +141,40 @@ We welcome:
 
 ---
 
-## NFC Tag Generation
+## NFC Tag System
 
-This repository includes a Node.js utility for generating NFC tag payloads for registered animals.
+This repository provides a complete NFC tag system:
+
+### ✅ Standard NFC Tags
+Generate, encode, and decode `myzubster:nfc:v1:` URIs with animal registration data.
 
 ```bash
-npm test
 node bin/generate-nfc-tag.js registration.json
 ```
 
-See [docs/nfc-tags.md](docs/nfc-tags.md) for the payload format, CLI usage, validation rules, and registration integration notes.
+### 📱 NFC Tag Scanning & Verification **NEW**
+Scan, decode, and verify NFC tags against a registry provider.
+
+```javascript
+const { scanAndVerify } = require('./src/nfcScanner');
+const result = scanAndVerify(uri, chainProvider);
+// result.status: 'verified' | 'mismatch' | 'unknown_animal' | 'invalid_uri'
+```
+
+```bash
+node bin/verify-nfc-tag.js "myzubster:nfc:v1:eyJzY2hlbWEiOi..."
+```
+
+### Quick Start
+
+```bash
+npm test              # 30+ tests covering all functionality
+node bin/verify-nfc-tag.js "myzubster:nfc:v1:..." # Verify a tag
+```
+
+### Documentation
+- [NFC Tag Format](docs/nfc-tags.md)
+- [Verification Guide](docs/verification.md)
 
 ---
 
