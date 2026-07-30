@@ -141,16 +141,32 @@ We welcome:
 
 ---
 
-## NFC Tag Generation
+## NFC Tag System
 
-This repository includes a Node.js utility for generating NFC tag payloads for registered animals.
+### ✅ Standard NFC Tags
+Generate, encode, and decode `myzubster:nfc:v1:` URIs.
 
 ```bash
-npm test
 node bin/generate-nfc-tag.js registration.json
 ```
 
-See [docs/nfc-tags.md](docs/nfc-tags.md) for the payload format, CLI usage, validation rules, and registration integration notes.
+### 🔒 Secure NFC Tags (Encrypted + Signed) **NEW**
+ECDH P-256 + AES-256-GCM encrypted tags with ECDSA P-256 anti-counterfeiting signatures.
+
+```javascript
+const { createSecureNfcTag, generateSecureKeyPair } = require('./src/nfcTag');
+const keys = generateSecureKeyPair();
+const tag = createSecureNfcTag(registration, keys);
+```
+
+### Quick Start
+
+```bash
+npm test              # 30+ tests covering standard + secure tag functionality
+```
+
+### Documentation
+- [NFC Tag Format & Secure Tags](docs/nfc-tags.md)
 
 ---
 
