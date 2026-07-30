@@ -205,3 +205,8 @@ Contributi sono benvenuti! Dai un'occhiata alle [issue aperte]([Issues](https://
 ## 🌐 Ecosystem Hub
 
 **MyZubster Ecosystem**: https://github.com/MyZubster-Ecosystem
+
+
+## 💬 Community
+
+- **Telegram**: [@MyZubster_bot](https://t.me/MyZubster_bot) – for updates, support, and discussions.
