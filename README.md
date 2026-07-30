@@ -210,3 +210,12 @@ Contributi sono benvenuti! Dai un'occhiata alle [issue aperte]([Issues](https://
 ## 💬 Community
 
 - **Telegram**: [@MyZubster_bot](https://t.me/MyZubster_bot) – for updates, support, and discussions.
+
+
+## 🌐 Connect with Us
+
+- **Telegram**: [@MyZubster_bot](https://t.me/MyZubster_bot) – updates, support, and discussions
+- **Twitter / X**: [@DanielIoni](https://twitter.com/DanielIoni) – project announcements and thoughts
+- **TikTok**: [@danielioni](https://tiktok.com/@danielioni) – behind the scenes and project updates
+- **Instagram**: [@danielioni](https://instagram.com/danielioni) – visuals and community stories
+- **dev.to**: [Daniel Ioni](https://dev.to/danielioni) – technical articles and project updates
