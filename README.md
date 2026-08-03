@@ -154,6 +154,19 @@ See [docs/nfc-tags.md](docs/nfc-tags.md) for the payload format, CLI usage, vali
 
 ---
 
+## NFC Tag Verification
+
+Decoding and verifying scanned NFC tags is implemented in `src/nfcScanner.js`. It decodes `myzubster:nfc:v1:` URIs, validates the payload shape, looks up the registry record via an injectable `chainProvider`, and compares every relevant field. The module is pure JavaScript: no network, wallet, or mainnet access.
+
+```bash
+npm test
+node bin/verify-nfc-tag.js registration.json
+```
+
+See [docs/verification.md](docs/verification.md) for the scan -> decode -> verify flow, the `chainProvider` contract, outcome statuses, and a React Native integration sketch.
+
+---
+
 ## 📄 License
 
 MIT - Free for everyone to use and modify.
