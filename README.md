@@ -181,6 +181,25 @@ node bin/verify-nfc-tag.js registration.json
 
 See [docs/verification.md](docs/verification.md) for the scan -> decode -> verify flow, the `chainProvider` contract, outcome statuses, and a React Native integration sketch.
 
+## Web-based NFC Tag Simulator
+
+Open `web/index.html` in any modern browser to generate virtual NFC tags,
+simulate a scan, and test the verification flow end-to-end without a physical
+tag or NFC reader. The simulator uses the Web Crypto API and produces URIs
+that are byte-compatible with the Node CLI (`src/nfcTag.js`).
+
+```bash
+# Run the bundled tests (covers both the Node library and the simulator)
+npm test
+
+# Or open the simulator UI
+xdg-open web/index.html   # Linux
+open web/index.html       # macOS
+```
+
+See [docs/web-simulator.md](docs/web-simulator.md) for the UI workflow,
+payload format details, and integration notes.
+
 ---
 
 ## 📄 License
