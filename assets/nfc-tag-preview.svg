@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="105mm" height="105mm" viewBox="0 0 350 350">
+  <rect width="350" height="350" fill="#ffffff"/>
+  <rect x="10" y="10" width="330" height="330" rx="42" fill="#0b3d2e"/>
+  <circle cx="175" cy="128" r="83" fill="#d9a441"/>
+  <g fill="#0b3d2e" transform="translate(175 128)">
+    <ellipse cx="0" cy="28" rx="39" ry="31"/>
+    <ellipse cx="-39" cy="-20" rx="13" ry="19" transform="rotate(-28 -39 -20)"/>
+    <ellipse cx="-14" cy="-40" rx="13" ry="19" transform="rotate(-8 -14 -40)"/>
+    <ellipse cx="14" cy="-40" rx="13" ry="19" transform="rotate(8 14 -40)"/>
+    <ellipse cx="39" cy="-20" rx="13" ry="19" transform="rotate(28 39 -20)"/>
+  </g>
+  <text x="175" y="242" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="28" font-weight="700" letter-spacing="1">MYZUBSTER</text>
+  <text x="175" y="270" text-anchor="middle" fill="#d9a441" font-family="Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="2.5">ANIMAL REGISTRY</text>
+  <text x="175" y="306" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="1">NFC • TAP TO VERIFY</text>
+</svg>

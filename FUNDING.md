@@ -14,9 +14,10 @@
 
 ## 📈 Transaction History
 
-| Date | Type | Amount (XMR) | Issue | Recipient | TX ID |
-|------|------|--------------|-------|-----------|-------|
-| 2026-07-29 | Payout | 0.06 | #7 | 45ynVR1Ngj... | b0ae536711... |
+| Date | Type | Amount (XMR) | Description | TX ID |
+|------|------|--------------|-------------|-------|
+| 2026-07-29 | Payout | 0.06 | PR #7 – NFC Tag Generation | b0ae536711... |
+| 2026-07-29 | Payout | 0.06 | PR #53 – Chat Template Fix | f13cdf3a83... |
 
 ---
 
@@ -35,14 +36,14 @@
 
 ## 💳 Donate to the Fund
 
-Support animal welfare by sending XMR to:
+Support the project by sending XMR to:
 
 `45M4DW1ug8bdQowWpxucTpgsfjLbVxbYaAra79VewmBobuuhgqTjyD4R3DzpqLM2veiphcB16n24qN1QbLg3y2PYGK3Qkoe`
 
 **Why donate?**
-- You fund animal welfare projects
-- You help protect endangered species
-- You promote animal conservation
+- Fund open source development
+- Support animal welfare projects
+- Promote financial privacy
 
 ---
 

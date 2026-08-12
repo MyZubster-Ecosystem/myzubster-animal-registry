@@ -1,3 +1,16 @@
+> **Part of the [MyZubster ecosystem](https://github.com/MyZubster-Ecosystem)**
+
+> **Part of the [MyZubster ecosystem](https://github.com/MyZubster-Ecosystem)**
+
+> **Part of the [MyZubster ecosystem](https://github.com/MyZubster-Ecosystem)**
+
+> **Part of the [MyZubster ecosystem](https://github.com/MyZubster-Ecosystem/myzubster)**
+[![License](https://img.shields.io/github/license/MyZubster-Ecosystem/myzubster-animal-registry](LICENSE)) 
+[![GitHub stars](https://img.shields.io/github/stars/MyZubster-Ecosystem/myzubster-animal-registry](https://github.com/MyZubster-Ecosystem/myzubster-animal-registry/stargazers)) 
+[![GitHub issues](https://img.shields.io/github/issues/MyZubster-Ecosystem/myzubster-animal-registry](https://github.com/MyZubster-Ecosystem/myzubster-animal-registry/issues)) 
+[![GitHub last commit](https://img.shields.io/github/last-commit/MyZubster-Ecosystem/myzubster-animal-registry](https://github.com/MyZubster-Ecosystem/myzubster-animal-registry/commits/main)) 
+[![Node.js](https://img.shields.io/badge/Node.js-18.x-green)](https://nodejs.org/)
+
 # 🐾 MyZubster - Animal Registry
 
 **Decentralized Animal Registry powered by Monero Blockchain**
@@ -36,15 +49,32 @@ Every animal registered becomes a permanent, verifiable record on the blockchain
 
 ## 📊 Economics
 
-| Fee Type | Percentage | Destination |
-|----------|------------|-------------|
-| **Creator Fee** | **2%** | **MyZubster platform creator** |
-| Conservation Fund | 5% | Animal welfare projects |
-| Development Fund | 3% | Platform improvements |
-| Community Fund | 1% | Rewards & incentives |
-| Operations | 89% | Infrastructure & support |
+**Registration is FREE.**
 
-[Full Economics Details →](ANIMAL_ECONOMICS.md)
+MyZubster is an open-source, community-driven project. All animal registrations are free.
+
+### How the Platform is Funded
+
+The platform is sustained through:
+- 💰 **Donations** – Voluntary contributions from the community
+- 🚀 **Premium Services** – Optional paid features (certificates, analytics)
+- 🤝 **Sponsors & Grants** – Corporate sponsorships and open source grants
+
+### Fund Allocation
+
+| Destination | Percentage |
+|-------------|------------|
+| Bounties | 90% |
+| Infrastructure | 5% |
+| Conservation | 5% |
+
+### Donate to Support MyZubster
+
+If you believe in this project, you can support us with a donation in Monero (XMR):
+
+**Wallet:** `45M4DW1ug8bdQowWpxucTpgsfjLbVxbYaAra79VewmBobuuhgqTjyD4R3DzpqLM2veiphcB16n24qN1QbLg3y2PYGK3Qkoe`
+
+[Full Economics Details →](ECONOMICS.md)
 
 ---
 ## 🤖 About This Project
@@ -111,17 +141,73 @@ We welcome:
 
 ---
 
-## NFC Tag Generation
+## NFC Tag System
 
+<<<<<<< HEAD
 This repository includes a Node.js utility for generating NFC tag payloads for registered animals, including encrypted and signed secure tags.
+=======
+### ✅ Standard NFC Tags
+Generate, encode, and decode `myzubster:nfc:v1:` URIs.
+>>>>>>> origin
 
 ```bash
-npm test
 node bin/generate-nfc-tag.js registration.json
 node bin/generate-nfc-tag.js registration.json --secure --public-key registry-public.pem --private-key registry-private.pem
 ```
 
+<<<<<<< HEAD
 See [docs/nfc-tags.md](docs/nfc-tags.md) for the payload format, CLI usage, validation rules, anti-counterfeiting checks, and registration integration notes.
+=======
+### 🔒 Secure NFC Tags (Encrypted + Signed) **NEW**
+ECDH P-256 + AES-256-GCM encrypted tags with ECDSA P-256 anti-counterfeiting signatures.
+
+```javascript
+const { createSecureNfcTag, generateSecureKeyPair } = require('./src/nfcTag');
+const keys = generateSecureKeyPair();
+const tag = createSecureNfcTag(registration, keys);
+```
+
+### Quick Start
+
+```bash
+npm test              # 30+ tests covering standard + secure tag functionality
+```
+
+### Documentation
+- [NFC Tag Format & Secure Tags](docs/nfc-tags.md)
+
+---
+
+## NFC Tag Verification
+
+Decoding and verifying scanned NFC tags is implemented in `src/nfcScanner.js`. It decodes `myzubster:nfc:v1:` URIs, validates the payload shape, looks up the registry record via an injectable `chainProvider`, and compares every relevant field. The module is pure JavaScript: no network, wallet, or mainnet access.
+
+```bash
+npm test
+node bin/verify-nfc-tag.js registration.json
+```
+
+See [docs/verification.md](docs/verification.md) for the scan -> decode -> verify flow, the `chainProvider` contract, outcome statuses, and a React Native integration sketch.
+
+## Web-based NFC Tag Simulator
+
+Open `web/index.html` in any modern browser to generate virtual NFC tags,
+simulate a scan, and test the verification flow end-to-end without a physical
+tag or NFC reader. The simulator uses the Web Crypto API and produces URIs
+that are byte-compatible with the Node CLI (`src/nfcTag.js`).
+
+```bash
+# Run the bundled tests (covers both the Node library and the simulator)
+npm test
+
+# Or open the simulator UI
+xdg-open web/index.html   # Linux
+open web/index.html       # macOS
+```
+
+See [docs/web-simulator.md](docs/web-simulator.md) for the UI workflow,
+payload format details, and integration notes.
+>>>>>>> origin
 
 ---
 
@@ -131,4 +217,67 @@ MIT - Free for everyone to use and modify.
 
 ---
 
-**Built with ❤️ for animals by DanielIoni-creator**
+**Built with ❤️ for animals by MyZubster-Ecosystem**
+## 🔗 Related Projects
+
+| Project | Description | Link |
+|---------|-------------|------|
+| **MyZubster Gateway** | Backend API for Monero payments and registry | [GitHub](https://github.com/MyZubster-Ecosystem/MyZubsterGateway) |
+| **MyZubster Plant Map** | Global map for plant registration | [GitHub](https://github.com/MyZubster-Ecosystem/-MyZubster---Global-Plant-Map-powered-by-Monero-blockchain) |
+| **MyZubster Animal Map** | Interactive map for animal registry | [GitHub](https://github.com/MyZubster-Ecosystem/myzubster-animal-map) |
+
+---
+
+## 🔗 Related Projects
+
+| Project | Description | Link |
+|---------|-------------|------|
+| **MyZubster Gateway** | Backend API for Monero payments and registry | [GitHub](https://github.com/MyZubster-Ecosystem/MyZubsterGateway) |
+| **MyZubster Plant Map** | Global map for plant registration | [GitHub](https://github.com/MyZubster-Ecosystem/-MyZubster---Global-Plant-Map-powered-by-Monero-blockchain) |
+| **MyZubster Animal Map** | Interactive map for animal registry | [GitHub](https://github.com/MyZubster-Ecosystem/myzubster-animal-map) |
+
+---
+
+## 📚 Documentation
+
+- [Economic Framework](ECONOMICS.md) – Tokenomics and fee structure
+- [Registration Guide](ANIMAL_REGISTRATION.md) – How to register an animal
+- [Contribution Guide](CONTRIBUTING.md) – How to contribute and earn XMR
+- [Fund Transparency](FUNDING.md) – All transactions are public
+- [API Documentation](docs/api.md) – API reference
+- [Verification Process](docs/verification.md) – How verification works
+
+## 🤝 Contributi
+
+Contributi sono benvenuti! Dai un'occhiata alle [issue aperte]([Issues](https://github.com/MyZubster-Ecosystem/myzubster-animal-registry/issues)) e alla [roadmap]([Roadmap](https://github.com/users/MyZubster-Ecosystem/projects/1)).
+
+## 🌐 Ecosystem Hub
+
+**MyZubster Ecosystem**: https://github.com/MyZubster-Ecosystem
+
+## 🌐 Ecosystem Hub
+
+**MyZubster Ecosystem**: https://github.com/MyZubster-Ecosystem
+
+## 🌐 Ecosystem Hub
+
+**MyZubster Ecosystem**: https://github.com/MyZubster-Ecosystem
+
+
+## 💬 Community
+
+- **Telegram**: [@MyZubster_bot](https://t.me/MyZubster_bot) – for updates, support, and discussions.
+
+
+## 🌐 Connect with Us
+
+- **Telegram**: [@MyZubster_bot](https://t.me/MyZubster_bot) – updates, support, and discussions
+- **Twitter / X**: [@DanielIoni](https://twitter.com/DanielIoni) – project announcements and thoughts
+- **TikTok**: [@danielioni](https://tiktok.com/@danielioni) – behind the scenes and project updates
+- **Instagram**: [@danielioni](https://instagram.com/danielioni) – visuals and community stories
+- **dev.to**: [Daniel Ioni](https://dev.to/danielioni) – technical articles and project updates
+
+
+## 💬 Community
+
+- **Telegram Channel**: [@myzubster](https://t.me/myzubster) – follow for updates, news, and discussions about the MyZubster ecosystem.
