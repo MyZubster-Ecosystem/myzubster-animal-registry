@@ -144,10 +144,14 @@ We welcome:
 ## NFC Tag System
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 This repository provides a complete NFC tag system:
 
 ### ✅ Standard NFC Tags
 Generate, encode, and decode `myzubster:nfc:v1:` URIs with animal registration data.
+=======
+This repository includes a Node.js utility for generating NFC tag payloads for registered animals, including encrypted and signed secure tags.
+>>>>>>> origin
 =======
 ### ✅ Standard NFC Tags
 Generate, encode, and decode `myzubster:nfc:v1:` URIs.
@@ -155,8 +159,10 @@ Generate, encode, and decode `myzubster:nfc:v1:` URIs.
 
 ```bash
 node bin/generate-nfc-tag.js registration.json
+node bin/generate-nfc-tag.js registration.json --secure --public-key registry-public.pem --private-key registry-private.pem
 ```
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 ### 📱 NFC Tag Scanning & Verification **NEW**
 Scan, decode, and verify NFC tags against a registry provider.
@@ -169,6 +175,9 @@ const result = scanAndVerify(uri, chainProvider);
 
 ```bash
 node bin/verify-nfc-tag.js "myzubster:nfc:v1:eyJzY2hlbWEiOi..."
+=======
+See [docs/nfc-tags.md](docs/nfc-tags.md) for the payload format, CLI usage, validation rules, anti-counterfeiting checks, and registration integration notes.
+>>>>>>> origin
 =======
 ### 🔒 Secure NFC Tags (Encrypted + Signed) **NEW**
 ECDH P-256 + AES-256-GCM encrypted tags with ECDSA P-256 anti-counterfeiting signatures.

@@ -4,6 +4,8 @@ This module implements the first NFC workflow for MyZubster Animal Registry:
 
 - Generate a unique NFC tag ID for each registered animal.
 - Encode the registration payload as a compact `myzubster:nfc:v1:` URI.
+- Encrypt tag data as `myzubster:nfc-secure:v1:` URIs with public-key cryptography.
+- Verify anti-counterfeiting fingerprints and registry signatures before trusting a tag.
 - Decode and validate NFC payloads during scanning or verification.
 - Attach the generated NFC tag ID to the animal registration record.
 
@@ -53,12 +55,30 @@ node bin/generate-nfc-tag.js registration.json
 
 The command prints an animal registration record plus the NFC tag data that can be written to an NFC tag as a URI/NDEF record.
 
+Generate a registry key pair for encrypted tags:
+
+```bash
+node bin/generate-nfc-tag.js --generate-keys
+```
+
+Generate a secure NFC payload:
+
+```bash
+node bin/generate-nfc-tag.js registration.json --secure --public-key registry-public.pem --private-key registry-private.pem
+```
+
 ## Payload Format
 
 The NFC URI uses this format:
 
 ```text
 myzubster:nfc:v1:<base64url-json-payload>
+```
+
+Secure NFC URIs use this format:
+
+```text
+myzubster:nfc-secure:v1:<base64url-json-envelope>
 ```
 
 Decoded payloads use the `myzubster.nfc-tag.v1` schema:
@@ -87,6 +107,34 @@ Decoded payloads use the `myzubster.nfc-tag.v1` schema:
 }
 ```
 
+<<<<<<< HEAD
+Secure envelopes use the `myzubster.nfc-secure-tag.v1` schema. The plaintext registration payload is encrypted with AES-256-GCM, the AES key is wrapped with RSA-OAEP-SHA256, and the envelope is signed with RSA-SHA256.
+
+```json
+{
+  "schema": "myzubster.nfc-secure-tag.v1",
+  "version": 1,
+  "tagId": "mzar_nfc_...",
+  "animalId": "animal_...",
+  "issuedAt": "2026-07-29T08:00:00.000Z",
+  "registryUrl": "https://registry.myzubster.com/animals/animal_...",
+  "encryption": {
+    "keyAlg": "RSA-OAEP-SHA256",
+    "contentAlg": "AES-256-GCM",
+    "encryptedKey": "...",
+    "iv": "...",
+    "authTag": "...",
+    "ciphertext": "..."
+  },
+  "antiCounterfeit": {
+    "fingerprint": "...",
+    "signatureAlg": "RSA-SHA256",
+    "signature": "..."
+  }
+}
+```
+
+=======
 ## Secure NFC Tags (Encrypted + Signed)
 
 Secure NFC tags add **encryption** (ECDH P-256 + AES-256-GCM) and **anti-counterfeiting** (ECDSA P-256 signatures) on top of the standard payload.
@@ -150,6 +198,7 @@ console.log(decrypted.animal.commonName); // 'Dog'
 | Offline verification | ❌ Needs registry | ✅ Self-contained |
 | URI size | ~400-500 chars | ~800-1000 chars |
 
+>>>>>>> origin
 ## Validation Rules
 
 - `species`, `commonName`, `animalType`, `latitude`, `longitude`, and `xmrAddress` are required.
@@ -161,6 +210,15 @@ console.log(decrypted.animal.commonName); // 'Dog'
 
 Use `registerAnimalWithNfc(registration)` at the point where an animal registration is accepted. It returns the normalized animal record with `status: "pending_verification"` and `nfcTagId`, plus the encoded NFC tag data for writing to a physical tag.
 
+<<<<<<< HEAD
+For protected tags, use `registerAnimalWithSecureNfc(registration, { publicKey, privateKey })`. The resulting animal record includes `nfcSecurity: "encrypted_signed"`.
+
+## Security Verification
+
+Use `verifySecureNfcTag(uri, { publicKey })` before accepting a secure NFC scan. It checks that the fingerprint matches the encrypted envelope and that the registry signature is valid.
+
+Use `decryptSecureNfcTag(uri, { publicKey, privateKey })` only in trusted registry services that can access the private key. It verifies the anti-counterfeiting data first, then decrypts and returns the original NFC payload.
+=======
 ## JavaScript API Reference
 
 Import the CommonJS module:
@@ -331,3 +389,4 @@ const tag = nfc.encodeNfcTag(registration, {
 
 Production callers should omit `randomBytes` so the module uses cryptographic
 randomness.
+>>>>>>> origin
