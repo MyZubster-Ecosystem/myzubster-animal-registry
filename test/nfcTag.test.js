@@ -9,15 +9,25 @@ const {
   createSecureNfcTag,
   decodeNfcTag,
   decodeSecureNfcTag,
+<<<<<<< HEAD
+  decryptSecureNfcTag,
+  encodeNfcTag,
+  generateNfcSecurityKeyPair,
+=======
   decryptPayload,
   decryptSecureNfcTag,
   encodeNfcTag,
   encryptPayload,
+>>>>>>> origin
   generateNfcTagId,
   generateSecureKeyPair,
   normalizeAnimalRegistration,
-  registerAnimalWithNfc,
   registerAnimalWithSecureNfc,
+  registerAnimalWithNfc,
+<<<<<<< HEAD
+=======
+  registerAnimalWithSecureNfc,
+>>>>>>> origin
   verifySecureNfcTag,
 } = require('../src/nfcTag');
 
@@ -38,6 +48,22 @@ const validRegistration = {
   xmr_address:
     '48dKf2FVJh3Uei2BL6BSRe4weK8T4h5aYXqYzSgoq2KJhbVKo2kSSBZtftWEibKLTe3RQTW3aL9jJLcNfWTwR2cF5rF1QfA',
 };
+const securityKeys = generateNfcSecurityKeyPair();
+
+function fixedSecurityOptions() {
+  return {
+    publicKey: securityKeys.publicKey,
+    privateKey: securityKeys.privateKey,
+    issuedAt: '2026-07-29T08:00:00.000Z',
+    randomBytes: Buffer.from('1234567890abcdef1234', 'hex'),
+    aesKey: Buffer.alloc(32, 1),
+    iv: Buffer.alloc(12, 2),
+  };
+}
+
+function encodeSecureEnvelope(envelope) {
+  return `${SECURE_NFC_URI_PREFIX}${Buffer.from(JSON.stringify(envelope), 'utf8').toString('base64url')}`;
+}
 
 // Fixed values for deterministic tests
 const FIXED = {
@@ -123,6 +149,21 @@ test('rejects invalid registration data', () => {
   );
 });
 
+<<<<<<< HEAD
+test('encrypts NFC tag data and verifies anti-counterfeit signature', () => {
+  const secureTag = createSecureNfcTag(validRegistration, fixedSecurityOptions());
+  const envelope = decodeSecureNfcTag(secureTag.uri);
+  const verification = verifySecureNfcTag(secureTag.uri, { publicKey: securityKeys.publicKey });
+  const decrypted = decryptSecureNfcTag(secureTag.uri, securityKeys);
+
+  assert.ok(secureTag.uri.startsWith(SECURE_NFC_URI_PREFIX));
+  assert.equal(secureTag.uri.includes('Dog'), false);
+  assert.equal(envelope.schema, 'myzubster.nfc-secure-tag.v1');
+  assert.equal(envelope.encryption.keyAlg, 'RSA-OAEP-SHA256');
+  assert.equal(envelope.encryption.contentAlg, 'AES-256-GCM');
+  assert.equal(envelope.antiCounterfeit.signatureAlg, 'RSA-SHA256');
+  assert.equal(verification.valid, true);
+=======
 // ---------------------------------------------------------------------------
 // Secure NFC Tag Tests (BOUNTY #3)
 // ---------------------------------------------------------------------------
@@ -182,17 +223,38 @@ test('secure NFC tag: decrypt after verification returns original payload', () =
   const decrypted = decryptSecureNfcTag(secureTag.uri, keyPair);
 
   assert.equal(decrypted.schema, 'myzubster.nfc-tag.v1');
+>>>>>>> origin
   assert.equal(decrypted.tagId, secureTag.tagId);
   assert.equal(decrypted.animal.commonName, 'Dog');
 });
 
+<<<<<<< HEAD
+test('rejects counterfeit secure NFC tags', () => {
+  const secureTag = createSecureNfcTag(validRegistration, fixedSecurityOptions());
+=======
 test('secure NFC tag: rejects counterfeit (tampered animalId)', () => {
   const secureTag = createSecureNfcTag(validRegistration, fixedSecureOptions());
+>>>>>>> origin
   const envelope = decodeSecureNfcTag(secureTag.uri);
   const counterfeitUri = encodeSecureEnvelope({
     ...envelope,
     animalId: 'animal_tampered',
   });
+<<<<<<< HEAD
+  const verification = verifySecureNfcTag(counterfeitUri, { publicKey: securityKeys.publicKey });
+
+  assert.equal(verification.valid, false);
+  assert.match(verification.reason, /fingerprint|signature/);
+  assert.throws(() => decryptSecureNfcTag(counterfeitUri, securityKeys), /fingerprint|signature/);
+});
+
+test('integrates secure NFC generation with animal registration', () => {
+  const result = registerAnimalWithSecureNfc(validRegistration, {
+    ...fixedSecurityOptions(),
+    registeredAt: '2026-07-29T08:00:00.000Z',
+  });
+  const verification = verifySecureNfcTag(result.nfcTag.uri, { publicKey: securityKeys.publicKey });
+=======
   const verification = verifySecureNfcTag(counterfeitUri, { publicKey: keyPair.publicKey });
   assert.equal(verification.valid, false);
   assert.match(verification.reason, /fingerprint/);
@@ -225,12 +287,15 @@ test('secure NFC tag: full registration integration', () => {
     registeredAt: '2026-07-29T08:00:00.000Z',
   });
   const verification = verifySecureNfcTag(result.nfcTag.uri, { publicKey: keyPair.publicKey });
+>>>>>>> origin
 
   assert.equal(result.animal.status, 'pending_verification');
   assert.equal(result.animal.nfcSecurity, 'encrypted_signed');
   assert.equal(result.animal.nfcTagId, result.nfcTag.tagId);
   assert.equal(verification.valid, true);
 });
+<<<<<<< HEAD
+=======
 
 test('secure NFC tag: throws if publicKey is missing', () => {
   assert.throws(
@@ -245,3 +310,4 @@ test('secure NFC tag: throws if privateKey is missing', () => {
     /privateKey/
   );
 });
+>>>>>>> origin

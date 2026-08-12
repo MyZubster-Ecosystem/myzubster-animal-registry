@@ -35,10 +35,13 @@ function normalizeNumber(value, fieldName) {
   return parsed;
 }
 
+<<<<<<< HEAD
+=======
 // ---------------------------------------------------------------------------
 // Secure NFC: helpers
 // ---------------------------------------------------------------------------
 
+>>>>>>> origin
 function toBase64Url(value) {
   return Buffer.from(value).toString('base64url');
 }
@@ -51,10 +54,21 @@ function canonicalJson(value) {
   if (Array.isArray(value)) {
     return `[${value.map(canonicalJson).join(',')}]`;
   }
+<<<<<<< HEAD
+
+  if (value && typeof value === 'object') {
+    return `{${Object.keys(value)
+      .sort()
+      .map((key) => `${JSON.stringify(key)}:${canonicalJson(value[key])}`)
+      .join(',')}}`;
+  }
+
+=======
   if (value && typeof value === 'object') {
     const keys = Object.keys(value).sort();
     return `{${keys.map((k) => `${JSON.stringify(k)}:${canonicalJson(value[k])}`).join(',')}}`;
   }
+>>>>>>> origin
   return JSON.stringify(value);
 }
 
@@ -179,6 +193,26 @@ function decodeNfcTag(uri) {
   return payload;
 }
 
+<<<<<<< HEAD
+function generateNfcSecurityKeyPair() {
+  return crypto.generateKeyPairSync('rsa', {
+    modulusLength: 2048,
+    publicKeyEncoding: {
+      type: 'spki',
+      format: 'pem',
+    },
+    privateKeyEncoding: {
+      type: 'pkcs8',
+      format: 'pem',
+    },
+  });
+}
+
+function getFingerprintTarget(envelope) {
+  return {
+    schema: envelope.schema,
+    version: envelope.version,
+=======
 // ---------------------------------------------------------------------------
 // Secure NFC: key generation (ECDH P-256 + ECDSA P-256)
 // ---------------------------------------------------------------------------
@@ -304,6 +338,7 @@ function decryptPayload(encryptedData, recipientPrivateKeyPem) {
 function getFingerprintTarget(envelope) {
   return {
     schema: envelope.schema,
+>>>>>>> origin
     tagId: envelope.tagId,
     animalId: envelope.animalId,
     issuedAt: envelope.issuedAt,
@@ -322,6 +357,37 @@ function getSignatureTarget(envelope) {
   };
 }
 
+<<<<<<< HEAD
+function createSecureNfcTag(registration, options = {}) {
+  assert(options.publicKey, 'publicKey is required for secure NFC tag encryption');
+  assert(options.privateKey, 'privateKey is required for secure NFC tag signing');
+
+  const payload = options.payload || createNfcPayload(registration, options);
+  const aesKey = options.aesKey ? Buffer.from(options.aesKey) : crypto.randomBytes(32);
+  const iv = options.iv ? Buffer.from(options.iv) : crypto.randomBytes(12);
+
+  assert(aesKey.length === 32, 'aesKey must be 32 bytes for AES-256-GCM');
+  assert(iv.length === 12, 'iv must be 12 bytes for AES-256-GCM');
+
+  const plaintext = Buffer.from(JSON.stringify(payload), 'utf8');
+  const aad = Buffer.from(`${payload.schema}|${payload.tagId}|${payload.animalId}`, 'utf8');
+  const cipher = crypto.createCipheriv('aes-256-gcm', aesKey, iv);
+  cipher.setAAD(aad);
+  const ciphertext = Buffer.concat([cipher.update(plaintext), cipher.final()]);
+  const authTag = cipher.getAuthTag();
+  const encryptedKey = crypto.publicEncrypt(
+    {
+      key: options.publicKey,
+      padding: crypto.constants.RSA_PKCS1_OAEP_PADDING,
+      oaepHash: 'sha256',
+    },
+    aesKey
+  );
+
+  const envelope = {
+    schema: 'myzubster.nfc-secure-tag.v1',
+    version: 1,
+=======
 // ---------------------------------------------------------------------------
 // Secure NFC: create, decode, verify, decrypt
 // ---------------------------------------------------------------------------
@@ -349,11 +415,31 @@ function createSecureNfcTag(registration, options = {}) {
 
   const envelope = {
     schema: 'myzubster.nfc-secure-tag.v1',
+>>>>>>> origin
     tagId: payload.tagId,
     animalId: payload.animalId,
     issuedAt: payload.issuedAt,
     registryUrl: payload.registryUrl,
     encryption: {
+<<<<<<< HEAD
+      keyAlg: 'RSA-OAEP-SHA256',
+      contentAlg: 'AES-256-GCM',
+      encryptedKey: toBase64Url(encryptedKey),
+      iv: toBase64Url(iv),
+      authTag: toBase64Url(authTag),
+      ciphertext: toBase64Url(ciphertext),
+    },
+  };
+
+  const fingerprint = sha256Base64Url(canonicalJson(getFingerprintTarget(envelope)));
+  envelope.antiCounterfeit = {
+    fingerprint,
+    signatureAlg: 'RSA-SHA256',
+  };
+  envelope.antiCounterfeit.signature = crypto
+    .sign('sha256', Buffer.from(canonicalJson(getSignatureTarget(envelope)), 'utf8'), options.privateKey)
+    .toString('base64url');
+=======
       keyAlg: 'ECDH-P256',
       contentAlg: 'AES-256-GCM',
       ephemeralPublicKey: encrypted.ephemeralPublicKey,
@@ -378,6 +464,7 @@ function createSecureNfcTag(registration, options = {}) {
     { key: options.privateKey, format: 'pem', type: 'pkcs8' },
     'base64url'
   );
+>>>>>>> origin
 
   return {
     tagId: payload.tagId,
@@ -387,9 +474,12 @@ function createSecureNfcTag(registration, options = {}) {
   };
 }
 
+<<<<<<< HEAD
+=======
 /**
  * Decode a secure NFC URI into the envelope structure.
  */
+>>>>>>> origin
 function decodeSecureNfcTag(uri) {
   assert(typeof uri === 'string' && uri.startsWith(SECURE_NFC_URI_PREFIX), 'Invalid MyZubster secure NFC URI');
 
@@ -402,6 +492,26 @@ function decodeSecureNfcTag(uri) {
   return envelope;
 }
 
+<<<<<<< HEAD
+function verifySecureNfcTag(uri, options = {}) {
+  try {
+    assert(options.publicKey, 'publicKey is required for secure NFC verification');
+
+    const envelope = decodeSecureNfcTag(uri);
+    const expectedFingerprint = sha256Base64Url(canonicalJson(getFingerprintTarget(envelope)));
+    assert(
+      envelope.antiCounterfeit.fingerprint === expectedFingerprint,
+      'Secure NFC fingerprint does not match payload'
+    );
+
+    const verified = crypto.verify(
+      'sha256',
+      Buffer.from(canonicalJson(getSignatureTarget(envelope)), 'utf8'),
+      options.publicKey,
+      fromBase64Url(envelope.antiCounterfeit.signature)
+    );
+    assert(verified, 'Secure NFC signature is invalid');
+=======
 /**
  * Verify a secure NFC tag's anti-counterfeit signature.
  *
@@ -431,6 +541,7 @@ function verifySecureNfcTag(uri, options = {}) {
       fromBase64Url(envelope.antiCounterfeit.signature)
     );
     assert(verified, 'NFC anti-counterfeit signature is invalid');
+>>>>>>> origin
 
     return {
       valid: true,
@@ -446,6 +557,38 @@ function verifySecureNfcTag(uri, options = {}) {
   }
 }
 
+<<<<<<< HEAD
+function decryptSecureNfcTag(uri, options = {}) {
+  assert(options.privateKey, 'privateKey is required for secure NFC decryption');
+  assert(options.publicKey, 'publicKey is required for secure NFC verification');
+
+  const verification = verifySecureNfcTag(uri, { publicKey: options.publicKey });
+  assert(verification.valid, verification.reason);
+
+  const envelope = decodeSecureNfcTag(uri);
+  const aesKey = crypto.privateDecrypt(
+    {
+      key: options.privateKey,
+      padding: crypto.constants.RSA_PKCS1_OAEP_PADDING,
+      oaepHash: 'sha256',
+    },
+    fromBase64Url(envelope.encryption.encryptedKey)
+  );
+  const decipher = crypto.createDecipheriv(
+    'aes-256-gcm',
+    aesKey,
+    fromBase64Url(envelope.encryption.iv)
+  );
+  decipher.setAAD(Buffer.from(`myzubster.nfc-tag.v1|${envelope.tagId}|${envelope.animalId}`, 'utf8'));
+  decipher.setAuthTag(fromBase64Url(envelope.encryption.authTag));
+
+  const plaintext = Buffer.concat([
+    decipher.update(fromBase64Url(envelope.encryption.ciphertext)),
+    decipher.final(),
+  ]);
+  const payload = JSON.parse(plaintext.toString('utf8'));
+
+=======
 /**
  * Decrypt a verified secure NFC tag to recover the original payload.
  *
@@ -477,15 +620,19 @@ function decryptSecureNfcTag(uri, options = {}) {
   );
 
   // Cross-check IDs
+>>>>>>> origin
   assert(payload.tagId === envelope.tagId, 'Decrypted NFC tag ID mismatch');
   assert(payload.animalId === envelope.animalId, 'Decrypted NFC animal ID mismatch');
 
   return payload;
 }
 
+<<<<<<< HEAD
+=======
 /**
  * Register an animal AND generate a secure (encrypted + signed) NFC tag.
  */
+>>>>>>> origin
 function registerAnimalWithSecureNfc(registration, options = {}) {
   const normalized = normalizeAnimalRegistration(registration);
   const nfcTag = createSecureNfcTag(normalized, options);
@@ -531,10 +678,14 @@ module.exports = {
   decodeNfcTag,
   decodeSecureNfcTag,
   decryptSecureNfcTag,
+<<<<<<< HEAD
+=======
   encryptPayload,
   decryptPayload,
+>>>>>>> origin
   encodeNfcTag,
   generateAnimalId,
+  generateNfcSecurityKeyPair,
   generateNfcTagId,
   generateSecureKeyPair,
   normalizeAnimalRegistration,
