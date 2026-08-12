@@ -87,6 +87,69 @@ Decoded payloads use the `myzubster.nfc-tag.v1` schema:
 }
 ```
 
+## Secure NFC Tags (Encrypted + Signed)
+
+Secure NFC tags add **encryption** (ECDH P-256 + AES-256-GCM) and **anti-counterfeiting** (ECDSA P-256 signatures) on top of the standard payload.
+
+### Key Generation
+
+```javascript
+const { generateSecureKeyPair } = require('../src/nfcTag');
+const keys = generateSecureKeyPair();
+// keys.publicKey  -> PEM for encryption & signature verification
+// keys.privateKey -> PEM for decryption & signing
+```
+
+Keep the private key secure. Share the public key so anyone can verify tags you issue.
+
+### Creating a Secure Tag
+
+```javascript
+const { createSecureNfcTag } = require('../src/nfcTag');
+
+const secureTag = createSecureNfcTag(registration, {
+  publicKey: keys.publicKey,   // Issuer's public key for encryption
+  privateKey: keys.privateKey, // Issuer's private key for signing
+});
+
+console.log(secureTag.uri);
+// myzubster:nfc-secure:v1:<base64url-envelope>
+```
+
+The encrypted URI does **not** leak the payload contents (species, location, etc.).
+
+### Verifying a Secure Tag
+
+```javascript
+const { verifySecureNfcTag, decryptSecureNfcTag } = require('../src/nfcTag');
+
+// Verify anti-counterfeit signature
+const verification = verifySecureNfcTag(secureTag.uri, { publicKey: keys.publicKey });
+console.log(verification.valid); // true
+
+// Decrypt the payload (requires private key)
+const decrypted = decryptSecureNfcTag(secureTag.uri, keys);
+console.log(decrypted.animal.commonName); // 'Dog'
+```
+
+### Security Properties
+
+| Property | Mechanism |
+|----------|-----------|
+| **Confidentiality** | ECDH P-256 key agreement + AES-256-GCM encryption |
+| **Integrity** | AES-GCM authentication tag + SHA-256 fingerprint |
+| **Authenticity** | ECDSA P-256 signature (R,S) |
+| **Anti-counterfeiting** | Signed fingerprint of envelope content |
+
+### Comparison: Standard vs Secure
+
+| Aspect | Standard (`nfc:v1`) | Secure (`nfc-secure:v1`) |
+|--------|---------------------|--------------------------|
+| Payload visible | ✅ Yes (plaintext) | ❌ No (encrypted) |
+| Tamper-evident | Via registry lookup | Via signature + fingerprint |
+| Offline verification | ❌ Needs registry | ✅ Self-contained |
+| URI size | ~400-500 chars | ~800-1000 chars |
+
 ## Validation Rules
 
 - `species`, `commonName`, `animalType`, `latitude`, `longitude`, and `xmrAddress` are required.
