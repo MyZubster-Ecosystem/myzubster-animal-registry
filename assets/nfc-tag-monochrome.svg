@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="35mm" height="35mm" viewBox="0 0 350 350" role="img" aria-labelledby="title desc">
+  <title id="title">MyZubster monochrome NFC animal registry tag</title>
+  <desc id="desc">Black and white rounded-square NFC tag design with a paw mark and MyZubster branding.</desc>
+  <rect width="350" height="350" rx="42" fill="#ffffff" stroke="#111111" stroke-width="8"/>
+  <g fill="#111111" transform="translate(175 126)">
+    <ellipse cx="0" cy="28" rx="43" ry="34"/>
+    <ellipse cx="-43" cy="-22" rx="14" ry="20" transform="rotate(-28 -43 -22)"/>
+    <ellipse cx="-15" cy="-43" rx="14" ry="20" transform="rotate(-8 -15 -43)"/>
+    <ellipse cx="17" cy="-43" rx="14" ry="20" transform="rotate(8 17 -43)"/>
+    <ellipse cx="44" cy="-21" rx="14" ry="20" transform="rotate(28 44 -21)"/>
+  </g>
+  <text x="175" y="222" text-anchor="middle" fill="#111111" font-family="Arial, sans-serif" font-size="31" font-weight="700" letter-spacing="1">MYZUBSTER</text>
+  <text x="175" y="253" text-anchor="middle" fill="#111111" font-family="Arial, sans-serif" font-size="14" font-weight="700" letter-spacing="3">ANIMAL REGISTRY</text>
+  <rect x="53" y="278" width="244" height="28" rx="14" fill="#111111"/>
+  <text x="175" y="297" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="12" font-weight="700">TAP TO VERIFY</text>
+</svg>
